@@ -1,0 +1,8 @@
+H NAME
+_printf - print data and format
+.SH SYNOPSIS
+.B printf FORMAT [ARGUMENT]...
+.SH DESCRIPTION
+Prints ARGUMENT(s) based on FORMAT
+
+If format includes format specifiers (subsequences beginning with %), the additional arguments following format are formatted and inserted in the resultine
