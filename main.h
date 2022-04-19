@@ -1,36 +1,47 @@
-#ifndef MAIN_H
+#ifndef  MAIN_H
 #define MAIN_H
-
 #include <stdarg.h>
-#include <stddef.h>
-#include <stdlib.h>
-
+#include <stdio.h>
 /**
- * struct structprint - structure containing
- * @q: the location and method to translate data to characters.
- * @u: print function for specific type.
+ * struct vtype - struct vtype
+ * @tp: tp
+ * @f: function
  *
- * Return: int
  */
-typedef struct structprint
+typedef struct vtype
 {
-	char *q;
-	int (*u)(char *format, va_list);
-} structype;
-
-int _putchar(char ch);
-int _puts(char *string);
-int printc(char *format, va_list);
-int printstr(char *format, va_list);
-int (*driver(char *format))(char *format, va_list);
-int _printf(char *format, ...);
-int printint(char *format, va_list pa);
-int integer(int number);
-int contadordigit(int number);
-int _abs(int number);
-int printpercent(char *format, va_list pa);
-int printhex(char *format, va_list);
-int printHEX(char *format, va_list);
-int printocta(char *format, va_list);
-int print_unsign(char *format, va_list);
-#endif
+	char tp;
+	void (*f)();
+} vtype_t;
+int _printf(const char *format, ...);
+void print_char(va_list valist);
+void print_int(va_list valist);
+void print_float(va_list valist);
+void print_string(va_list valist);
+void _write_buffer(char *buffer, int *index);
+int _strlen(char *s);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void format_s(va_list valist, char *buffer, int *index);
+void format_c(va_list valist, char *buffer, int *index);
+void format_d(va_list valist, char *buffer, int *index);
+char *itos(char str[], long int num);
+char *utos(char str[], int num);
+int num_len(int num);
+int float_len(double f);
+void format_i(va_list valist, char *buffer, int *index);
+void format_u(va_list valist, char *buffer, int *index);
+void format_perc(va_list valist, char *buffer, int *index);
+void format_p(va_list valist, char *buffer, int *index);
+void format_lx(va_list valist, char *buffer, int *index);
+char *tostring(char str[], int num);
+int num_len(int num);
+void reset_buffer(char buffer[]);
+void *rot13(char *s);
+void rev_string(char *s);
+void format_h(va_list valist, char *buffer, int *index);
+void format_ch(va_list valist, char *buffer, int *index);
+void format_o(va_list valist, char *buffer, int *index);
+void format_b(va_list valist, char *buffer, int *index);
+void format_r(va_list valist, char *buffer, int *index);
+void format_R(va_list valist, char *buffer, int *index);
+#endif /* MAIN_H */f
