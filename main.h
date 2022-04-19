@@ -1,47 +1,62 @@
-#ifndef  MAIN_H
+#ifndef MAIN_H
 #define MAIN_H
+
 #include <stdarg.h>
-#include <stdio.h>
+#include <stddef.h>
 /**
- * struct vtype - struct vtype
- * @tp: tp
- * @f: function
+ * struct specifier - struct specifier.
  *
+ * @valid: The valid character.
+ * @f: The functions associated.
  */
-typedef struct vtype
+
+typedef struct specifier
 {
-	char tp;
-	void (*f)();
-} vtype_t;
+	char *valid;
+	int (*f)(va_list);
+} spec;
+
+/* writes func */
+int _putchar(char c);
+
+/* converter */
+char *convert(unsigned long int num, int base, int lowercase);
+
+/* gets the specifier */
+int (*get_func(char x))(va_list args);
+
+/* prints the main specifier of all */
 int _printf(const char *format, ...);
-void print_char(va_list valist);
-void print_int(va_list valist);
-void print_float(va_list valist);
-void print_string(va_list valist);
-void _write_buffer(char *buffer, int *index);
-int _strlen(char *s);
-char *_memcpy(char *dest, char *src, unsigned int n);
-void format_s(va_list valist, char *buffer, int *index);
-void format_c(va_list valist, char *buffer, int *index);
-void format_d(va_list valist, char *buffer, int *index);
-char *itos(char str[], long int num);
-char *utos(char str[], int num);
-int num_len(int num);
-int float_len(double f);
-void format_i(va_list valist, char *buffer, int *index);
-void format_u(va_list valist, char *buffer, int *index);
-void format_perc(va_list valist, char *buffer, int *index);
-void format_p(va_list valist, char *buffer, int *index);
-void format_lx(va_list valist, char *buffer, int *index);
-char *tostring(char str[], int num);
-int num_len(int num);
-void reset_buffer(char buffer[]);
-void *rot13(char *s);
-void rev_string(char *s);
-void format_h(va_list valist, char *buffer, int *index);
-void format_ch(va_list valist, char *buffer, int *index);
-void format_o(va_list valist, char *buffer, int *index);
-void format_b(va_list valist, char *buffer, int *index);
-void format_r(va_list valist, char *buffer, int *index);
-void format_R(va_list valist, char *buffer, int *index);
-#endif /* MAIN_H */f
+
+/* prints each specifier */
+int print_c(va_list args);
+int print_s(va_list args);
+int print_d(va_list args);
+int print_i(va_list args);
+int print_b(va_list args);
+int print_u(va_list args);
+int print_o(va_list args);
+int print_p(va_list args);
+int print_x(va_list args);
+int print_X(va_list args);
+
+/* prints percent '%' */
+int print_percent(va_list args);
+
+/* prints in reverse order */
+int print_rev(va_list args);
+int print_R(va_list args);
+
+/* prints the address of pointer */
+void print_pointer(unsigned long ptr, int *count);
+
+/* count a num system */
+int countDigits(unsigned int num);
+int countOctal(unsigned int num);
+int countBinary(unsigned int num);
+int print_number(unsigned int n);
+
+/* prints the length of a string */
+int _strlen(char *);
+
+#endif
